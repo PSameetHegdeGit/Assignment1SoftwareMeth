@@ -26,7 +26,7 @@ public class Team
 
    public boolean isEmpty()
    {
-       return false;
+       return true;
    }
 
    public void add(TeamMember m)
@@ -41,7 +41,27 @@ public class Team
 
    public boolean contains(TeamMember m)
    {
-      return false;
+	  if (!isEmpty()) {
+		  return false;
+	  }
+	  else {
+		  //Compare each team member in team w/ m
+		  try {
+			  int i = 0;
+			  TeamMember checker = team[i];
+			  while (true) {
+				  if(checker.equals(m)) {
+					  return true;
+				  }
+				  i++;
+				  checker = team[i];
+			  }
+		  }
+		  catch(Exception e) { //If Array index out of bounds
+			  return false;
+		  }
+	  }
+     
    }
 
    public void print()

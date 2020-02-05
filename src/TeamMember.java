@@ -5,16 +5,17 @@
 public class TeamMember
 {
    private String name;
-   private Date   startDate;
+   private Date  startDate;
 
    public TeamMember(String nm, Date date)
    {
-
+	   name = nm;
+	   startDate = new Date(date);
    }
 
    public Date getStartDate()
    {
-      return null;
+      return startDate;
    }
 
    public boolean equals(Object obj)
