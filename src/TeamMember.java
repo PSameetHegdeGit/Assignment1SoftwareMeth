@@ -36,16 +36,29 @@ public class TeamMember
      
      //Test 1
      System.out.println("Test 1: Check to see if equals returns correct boolean value when comparing two team members");
-     TeamMember member = new TeamMember("Sam", new Date("1/2/2012"));
+     TeamMember test1Member = new TeamMember("Sam", new Date("1/2/2012"));
      
-     boolean isEqual = member.equals(new TeamMember("Sam", new Date("1/2/2012")));
+     boolean isEqual = test1Member.equals(new TeamMember("Sam", new Date("1/2/2012")));
      System.out.println("input: Sam 1/2/2012 & Sam 1/2/2012 | " + " output: " + isEqual);
      
-     boolean notEqual = member.equals(new TeamMember("Rick", new Date("2/3/2012")));
-     System.out.println("input: Sam 1/2/2012 & Rick 2/3/2012 | " + " output: " + notEqual + "\n");
+     boolean notEqual = test1Member.equals(new TeamMember("Rick", new Date("2/3/2012")));
+     System.out.println("input: Sam 1/2/2012 & Rick 2/3/2012 | " + " output: " + notEqual);
      
+     boolean notEqual2 = test1Member.equals(new TeamMember("Sam", new Date("3/1/1999")));
+     System.out.println("input: Sam 1/2/2012 & Sam 3/1/1999 |" + " output: " + notEqual2);
+     
+     boolean notEqual3 = test1Member.equals(new TeamMember("George", new Date("1/2/2012")));
+     System.out.println("input: Sam 1/2/2012 & George 1/2/2012 |" + " output: " + notEqual3 + "\n");
     
      //Test 2: Check to see if constructor is initializing data members w/ parameters
+     System.out.println("Test 2: Check to see if constructor is initializing data members w/ parameters");
+     TeamMember test2Membera = new TeamMember ("Yussef", new Date("12/2/1999"));
+     System.out.println("name input: Yussef | " + "name output: " + test2Membera.name);
+     System.out.println("Date input: 12/2/1999 |" + " Date output: " + test2Membera.startDate.toString());
+     
+     TeamMember test2Memberb = new TeamMember("Bob", new Date("12/2"));
+     System.out.println("name input: Bob |" + " name output: " + test2Memberb.name);
+     System.out.println("Date input: 12/2 |" + " date output: " + test2Memberb.startDate.toString());
      
    }
 }

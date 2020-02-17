@@ -14,32 +14,6 @@ public class Date
    private int  year;
    
    
-   //Below are get and set methods to retrieve 
-   public int getDay() {
-	   return this.day;
-   }
-   
-   public int getMonth() {
-	   return this.month;
-   }
-   
-   public int getYear() {
-	   return this.year;
-   }
-   
-   public void setDay(int day) {
-	   this.day = day;
-   }
-   
-   public void setMonth(int month) {
-	   this.month = month;
-   }
-   
-   public void setYear(int year) {
-	   this.year = year;
-   }
-    //Above are get and set methods
-   
    
    //Below method checks to see if a leap year is valid
    public static boolean isLeapYear(int year)
@@ -74,12 +48,8 @@ public class Date
 		  this.year = Integer.parseInt(dateTokenizer.nextToken(delim));
 	  }
 	  catch(Exception e){
-		  System.out.println("date is malformed. Please reenter Date:");
-		  //add some code to handle malformed code --> if don't handle then day, month, and year, will be initialized to default value of 0 
+		  System.out.println("date is malformed!");
 	  }
-	 
-	 
-      //use StringTokenizer to parse the String and create a Date object
    }
 
    //Constructor that sets Date = dates of another Date
@@ -88,8 +58,6 @@ public class Date
 	   day = d.day;
 	   month = d.month;
 	   year = d.year;
-	   
-      //this is a constructor
    }
    
    
@@ -144,8 +112,11 @@ public class Date
    @Override
    public boolean equals(Object obj)
    {
-	   
-       return false;
+	   String checker = String.format("%s/%s/%s", month, day, year);
+	      
+	   boolean valid = checker.equals((obj.toString()));
+	      
+	   return valid;
    }
    
    //Below is the test bed main for the date class
@@ -173,8 +144,17 @@ public class Date
 	  System.out.println("input: '06/13/2019' |" + " output: " + dateTest3a.isValid());
 	  System.out.println("input: '13/12/1999' |" + " output: " + dateTest3b.isValid());
 	  System.out.println("input: '2/30/2020' |" + " output: " + dateTest3c.isValid());
-	  System.out.println("input: '3/32/1998' |" + " output: " + dateTest3d.isValid());
+	  System.out.println("input: '3/32/1998' |" + " output: " + dateTest3d.isValid() + "\n");
 	  
+	  //Test 4: Check to see if constructor Date(Date d) is working properly using equals fxn
+	  System.out.println("test 4: Check to see if constructor Date(Date d) is working properly using equals fxn");
+	  Date dateTest4Param = new Date("5/19/1999");
+	  Date dateTest4Main = new Date(dateTest4Param);
+	  
+	  boolean equalDates = dateTest4Main.equals(dateTest4Param);
+	  boolean notEqualDates = dateTest4Main.equals("3/2/1999");
+	  System.out.println("input: Date objs. '5/19/1999' and '5/19/1999' |" + " output: " + equalDates);
+	  System.out.println("input: Date objs. '5/19/1999' and '3/2/1999' |" + " output: " + notEqualDates);
    }
    
 }
