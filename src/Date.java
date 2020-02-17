@@ -43,7 +43,7 @@ public class Date
    {
 	   if( year % 4 == 0) {
 		   if( year % 100 == 0 ) {
-			   if( year % 400 == 0 ) {
+		       if( year % 400 == 0 ) {
 				   return true;
 			   }
 			   else {
@@ -91,7 +91,11 @@ public class Date
    public boolean isValid()
    {
 	   //STILL NEED TO CHECK FOR LEAP YEAR
+	   if( month < 1 || month > 12 || day < 1 || year < 1 ) {
+		   return false;
+	   }
 	   boolean valid;
+	   
 	   if( month == 2 ) { 
 		   boolean leapYear = isLeapYear(year);
 		   
