@@ -14,6 +14,7 @@ public class Team
       team = new TeamMember[GROW_SIZE];
    }
 
+   //Below method finds a team member
    private int find(TeamMember m)
    {
 	   int i = 0;
@@ -26,9 +27,11 @@ public class Team
        return -1;
    }
 
+   
+   //Below method increase size of array by the GROW_SIZE which is 4
    private void grow()
    {
-	   System.out.println("in grow: team Class");
+	  
 	  //If array is totally full --> create new array with 4 other elements & populate new team with this
       TeamMember [] newTeam = new TeamMember[sizeOfTeam(team) + 4];
       int size = sizeOfTeam(team);
@@ -39,9 +42,11 @@ public class Team
       team = newTeam;
    }
 
+   
+   //Below method returns true if array is empty
    public boolean isEmpty()
    {
-	   System.out.println("In IsEmpty: Team Class");
+	  
 	   
 	   int i = 0;
 	   TeamMember emptyChecker;
@@ -59,10 +64,11 @@ public class Team
        return true;
    }
 
-   //Does not look for duplicates
+   
+   //Below array adds Team Member to team
    public void add(TeamMember m)
    {
-	   System.out.println("In add function: team class");
+
 	   int i = 0;
 	   try {
 		   while(team[i] != null) {
@@ -76,9 +82,10 @@ public class Team
 		   grow();
 		   add(m);
 	   }
-	   System.out.println(team[i].toString());
    }
 
+   
+   //Below array removes a team member from team and returns true; if team is empty, returns false
    public boolean remove(TeamMember m)
    {
 	   if (isEmpty()) {
@@ -91,26 +98,21 @@ public class Team
 			   team[memberIndex] = team[numMembers-1];
 			   team[numMembers-1] = null;
 			   numMembers--;
+			   
+			   System.out.println(m.toString() + " has left the team.");
+			   
 			   return true;
 		   }
-		   /*int i = 0;
-		   while (i < numMembers) {
-			   if(m.toString().equals(team[i].toString())) {
-				   team[i] = team[numMembers-1];
-				   team[numMembers-1] = null;
-				   numMembers--;
-				   return true;
-			   }
-			   i++;
-		   }*/
 	   }
-	   System.out.println("Team member does not exist!");
+	   System.out.println(m.toString() + " is not a team member.");
        return false;
    }
 
+   
+   //Below function returns true if team contains TeamMember m
    public boolean contains(TeamMember m)
    {
-	  System.out.println("In Contains: team class"); 
+
 	   
 	  if (isEmpty()) {
 		  return false;
@@ -135,14 +137,10 @@ public class Team
      
    }
    
-   //Get method for the team
-   public TeamMember[] getTeam(TeamMember [] team) {
-	   return team;
-   }
-   
-   //Returns the sizez of the team
+  
+   //Below Function is a Helper Function: returns the size of team 
    private int sizeOfTeam(TeamMember[] team) {
-	   System.out.println("In sizeOfTeam: team class");
+	
 	   
 	   int size = 0;
 	   TeamMember sizechecker;
@@ -152,13 +150,14 @@ public class Team
 			   size++;
 		   }
 	   }
-	   catch(Exception e) { //Array out of bounds --> gives us size once we hit catch statement
+	   catch(Exception e) { //Array out of bounds --> We get the size once we hit catch statement
 		   
 	   }
 	   
 	   return size;
    }
 
+   
    public void print()
    {
 	  System.out.println("We have the following Team Members:");
@@ -166,6 +165,6 @@ public class Team
 		  System.out.println(team[i].toString());
 	  }
 	  System.out.println("--End of List--");  
-      //set up a for loop and call the toString() method
+ 
    }
 }

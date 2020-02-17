@@ -13,6 +13,8 @@ public class ProjectManager
 {
    Scanner stdin;
    Team cs213 = new Team();
+   
+   //Function checks input, organizes input into name and date, and runs either add, remove, print, or quit depending on command
    public void run()
    {
 
@@ -23,10 +25,10 @@ public class ProjectManager
       String name;
 	  String date;
       
-      //Below command has problems --> requires 3 parameters; should support < 3 param.
+ 
       while ( !done ) {
     	  String command = stdin.next();
-    	  ///WE MAY HAVE tO CHECK FOR mistyped commands longer than one char
+    	
     	  switch (command){
     	  	case "A": name = stdin.next(); date = stdin.next(); add(name, date); break;
     	  	case "R": name = stdin.next(); date = stdin.next(); remove(name, date); break;
@@ -35,60 +37,54 @@ public class ProjectManager
             default: System.out.println(String.format("command '%s' not supported!", command)); stdin.nextLine();//deal with bad command here
     	  }     
       }
-      //write java code before you terminate the program
-   } //run()
+   
+   } 
 
+   //Below functions adds team member to team
    private void add(String name, String date)
    {
-	   System.out.println("in Add command: Project Manager");
-	   System.out.println(String.format("to work with: %s %s", name, date));
-	   
+	 
 	   Date newDate = new Date(date);
-	   System.out.println(String.format("month and year: %s %s %s", newDate.getMonth(), newDate.getDay(), newDate.getYear()));
 	   
 	   if(newDate.isValid()) {
-		   System.out.println("Team member is valid so can check if team member can be added to team");
-		   //Team member logic down below
 		   TeamMember person = new TeamMember(name, newDate);
+		   
 		   if(!cs213.contains(person)) {
 			   cs213.add(person);
+			   System.out.println(String.format("%s has joined the team", person.toString()));
 		   }
 		   else {
-			   System.out.println("person is already in team!");
+			   System.out.println(person.toString() + " is already in team!");
 		   }
 	   }
 	   else {
-		   System.out.println(String.format("%s/%s/%s is not a valid date!", newDate.getMonth(), newDate.getDay(), newDate.getYear()));
+		   System.out.println(String.format("%s is not a valid date!", newDate.toString()));
 	   }
-      	//must check if the date is valid
-	   //must call the contains() method to check if a given
-	   //team member is in the team already
+  
    }
 
+   //Below functions removes team members from team
    private void remove(String name, String date)
    {
-	   System.out.println("in remove command: Project Manager");
-	   System.out.println(String.format("to work with: %s %s", name, date));
+	 
 	   Date newDate = new Date(date);
 	   
+	   //If date is a valid date, remove team member
 	   if (newDate.isValid()) {
-		   System.out.println("Date valid so can go ahead and rm team memer");
 		   cs213.remove(new TeamMember(name, newDate));
 	   }
+	   //else, date is not valid
 	   else {
-		   System.out.println(String.format("%s/%s/%s is not a valid date!", newDate.getMonth(), newDate.getDay(), newDate.getYear()));
+		   System.out.println(String.format("%s is not a valid date!", newDate.toString()));
 	   }
 	   
-      //must check if the date is valid
-
+  
    }
 
+   // Below function prints all team members in team
    private void print()
    {
-	   System.out.println("in print command: Project Manager");
-	  
-	   cs213.print();
-      
+	   cs213.print();  
    }
 
   
