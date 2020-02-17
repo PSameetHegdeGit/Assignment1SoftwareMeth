@@ -37,7 +37,28 @@ public class Date
    public void setYear(int year) {
 	   this.year = year;
    }
-   //Above are get and set methods
+    //Above are get and set methods
+   
+   public static boolean isLeapYear(int year)
+   {
+	   if( year % 4 == 0) {
+		   if( year % 100 == 0 ) {
+			   if( year % 400 == 0 ) {
+				   return true;
+			   }
+			   else {
+				   return false;
+			   }
+		   }
+		   else {
+			   return true;
+		   }
+	   }
+	   
+	   return false;
+	   
+   }
+   
    
    
    public Date(String d)
@@ -71,13 +92,29 @@ public class Date
    {
 	   //STILL NEED TO CHECK FOR LEAP YEAR
 	   boolean valid;
+	   if( month == 2 ) { 
+		   boolean leapYear = isLeapYear(year);
+		   
+		   if( leapYear ) {
+			   System.out.println("leap year");
+			   valid = ( day < 30 );
+		   }
+		   else {
+			   System.out.println("not leap year");
+			   valid = ( day < 29 );
+			   return valid;
+		   }
+		   
+	   }
 	   
+	   
+
 	   if (month < 8) {
-		   valid = (month % 2 == 0 && day < 30) || (month % 2 == 1 && day < 31);
+		   valid = (month % 2 == 0 && day <= 30) || (month % 2 == 1 && day <= 31);
 		   
 	   }
 	   else { 
-		   valid = (month % 2 == 0 && day < 31) || (month % 2 == 1 && day < 30);
+		   valid = (month % 2 == 0 && day <= 31) || (month % 2 == 1 && day <= 30);
 	   }
 	
 	
@@ -101,6 +138,10 @@ public class Date
    //Below is the test bed main for the date class
    public static void main(String [] args) {
 	  System.out.println("This is the test bed main for the Date Class");
+	  boolean leap = isLeapYear(2017);
+	  
+	  System.out.println(leap);
+	  
    }
    
 }

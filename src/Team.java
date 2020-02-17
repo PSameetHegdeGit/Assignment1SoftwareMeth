@@ -16,7 +16,14 @@ public class Team
 
    private int find(TeamMember m)
    {
-       return 0;
+	   int i = 0;
+	   while (i < numMembers) {
+		   if(m.toString().equals(team[i].toString())) {
+			   return i;
+		   }
+		   i++;
+	   }
+       return -1;
    }
 
    private void grow()
@@ -79,15 +86,23 @@ public class Team
 		   return false;
 	   }
 	   else {
-		   int i = 0;
+		   int memberIndex = find(m);
+		   if( memberIndex != -1) {
+			   team[memberIndex] = team[numMembers-1];
+			   team[numMembers-1] = null;
+			   numMembers--;
+			   return true;
+		   }
+		   /*int i = 0;
 		   while (i < numMembers) {
 			   if(m.toString().equals(team[i].toString())) {
-				   team[i] = null;
+				   team[i] = team[numMembers-1];
+				   team[numMembers-1] = null;
 				   numMembers--;
 				   return true;
 			   }
 			   i++;
-		   }
+		   }*/
 	   }
 	   System.out.println("Team member does not exist!");
        return false;

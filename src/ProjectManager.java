@@ -27,12 +27,12 @@ public class ProjectManager
       while ( !done ) {
     	  String command = stdin.next();
     	  ///WE MAY HAVE tO CHECK FOR mistyped commands longer than one char
-    	  switch (command.charAt(0)){
-    	  	case 'A': name = stdin.next(); date = stdin.next(); add(name, date); break;
-    	  	case 'R': name = stdin.next(); date = stdin.next(); remove(name, date); break;
-            case 'P': print(); break;
-            case 'Q': done = true; break;
-            default: System.out.println(String.format("command '%s' not supported!", command.charAt(0))); //deal with bad command here
+    	  switch (command){
+    	  	case "A": name = stdin.next(); date = stdin.next(); add(name, date); break;
+    	  	case "R": name = stdin.next(); date = stdin.next(); remove(name, date); break;
+            case "P": print(); break;
+            case "Q": done = true; break;
+            default: System.out.println(String.format("command '%s' not supported!", command)); stdin.nextLine();//deal with bad command here
     	  }     
       }
       //write java code before you terminate the program
