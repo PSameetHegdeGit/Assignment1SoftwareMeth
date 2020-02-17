@@ -1,20 +1,28 @@
 /**
-
- @author
- */
+This class defines the name and starting date of a team member
+Its methods are called to check for equivalent members and to format a member's properties as a string
+@author Sameet Hegde, Abhijit Bhatt
+*/
 public class TeamMember
 {
    private String name;
    private Date  startDate;
    
-
+   /**
+   Constructor that sets name and start date of a team member
+   @param nm  name of member
+   @param date  start date of member
+    */
    public TeamMember(String nm, Date date)
    {
 	   name = nm;
 	   startDate = new Date(date);
    }
    
-   //Below Function Checks to see if TeamMembers are equal to one another 
+   /**
+   Below Function Checks to see if TeamMembers are equal to one another 
+   @param obj object to be compared to class
+   */
    public boolean equals(Object obj)
    {
 
@@ -25,12 +33,19 @@ public class TeamMember
       return valid;
    }
 
-   //Formats name and date into a string
+   /**
+   Formats name and date into a string
+   @return name and date as String
+   */
    public String toString()
    {   
        return name + " " + startDate.toString();
    }
 
+   /**
+   Testbed main to test every method
+   @param args
+   */
    public static void main(String [] args){
      System.out.println("In Testbed main: TeamMember\n");
      

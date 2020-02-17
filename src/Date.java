@@ -2,20 +2,24 @@ import java.util.StringTokenizer;
 
 
 /**
-
- @author
- */
+This class defines the properties of a date and checks if inputted dates are valid.
+@author Sameet Hegde, Abhijit Bhatt
+*/
 
 
 public class Date
 {
    private int  day;
    private int  month;
-   private int  year;
+   private int  year;   
    
    
    
-   //Below method checks to see if a leap year is valid
+   /**
+   Below method checks to see if given year is a leap year
+   @param year  to be checked if it is a leap year
+   @return true if leap year, false otherwise
+   */
    public static boolean isLeapYear(int year)
    {
 	   if( year % Month.QUADRENNIAL == 0) {
@@ -37,10 +41,13 @@ public class Date
    }
    
    
-   //Constructor that takes a string formatted date and sets class variables as values nested in string 
-   public Date(String d)
+   /**
+   Constructor that takes a string formatted date and sets class variables as values nested in string  
+   @param date String to be parsed into class variables
+   */
+   public Date(String date)
    {
-	  StringTokenizer dateTokenizer = new StringTokenizer(d);
+	  StringTokenizer dateTokenizer = new StringTokenizer(date);
 	  String delim = "/";
 	  try {
 		  this.month = Integer.parseInt(dateTokenizer.nextToken(delim));
@@ -52,16 +59,22 @@ public class Date
 	  }
    }
 
-   //Constructor that sets Date = dates of another Date
-   public Date(Date d)
+   /**
+   Constructor that sets Date = dates of another Date 
+   @param date
+   */
+   public Date(Date date)
    {
-	   day = d.day;
-	   month = d.month;
-	   year = d.year;
+	   day = date.day;
+	   month = date.month;
+	   year = date.year;
    }
    
    
-   //Below Function checks to see if a date is valid 
+   /**
+   Below Function checks to see if a date is valid 
+   @return true if date is valid, false otherwise
+   */
    public boolean isValid()
    {
 	   // Check to make sure if month is within a valid range
@@ -103,13 +116,21 @@ public class Date
 
    
    @Override
-   //Below method returns string format of date
+   /**
+   Below method returns string format of date 
+   @return date as String
+   */
    public String toString()
    {
        return String.format("%s/%s/%s", month, day, year);
    }
 
    @Override
+   /**
+   This method checks if the class variables match Date object
+   @param obj
+   @return true if variables and object match, false otherwise
+   */
    public boolean equals(Object obj)
    {
 	   String checker = String.format("%s/%s/%s", month, day, year);
@@ -119,7 +140,10 @@ public class Date
 	   return valid;
    }
    
-   //Below is the test bed main for the date class
+   /**
+   Below is the test bed main for the date class 
+   @param args
+   */
    public static void main(String [] args) {
 	  System.out.println("Below is the test bed main for the Date Class\n");
 	  

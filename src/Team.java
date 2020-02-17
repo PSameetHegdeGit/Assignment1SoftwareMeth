@@ -1,6 +1,7 @@
 /**
-
- @author
+This class defines a team and its operations
+The methods are called when adding, removing, and printing team members
+ @author Sameet Hegde, Abhijit Bhatt
  */
 public class Team
 {
@@ -9,17 +10,24 @@ public class Team
    private TeamMember [] team;
    private int numMembers;
 
+   /**
+   Constructor that initializes team array
+   */
    public Team()
    {
       team = new TeamMember[GROW_SIZE];
    }
 
-   //Below method finds a team member
-   private int find(TeamMember m)
+   /**
+   Below method finds a team member
+   @param member to be searched for in team
+   @return index of member in the team array, -1 if not present
+   */
+   private int find(TeamMember member)
    {
 	   int i = 0;
 	   while (i < numMembers) {
-		   if(m.toString().equals(team[i].toString())) {
+		   if(member.toString().equals(team[i].toString())) {
 			   return i;
 		   }
 		   i++;
@@ -28,7 +36,9 @@ public class Team
    }
 
    
-   //Below method increase size of array by the GROW_SIZE which is 4
+   /**
+   Below method increase size of array by the GROW_SIZE which is 4
+   */
    private void grow()
    {
 	  
@@ -43,7 +53,10 @@ public class Team
    }
 
    
-   //Below method returns true if array is empty
+   /**
+   Below method returns true if array is empty
+   @return true if empty, false otherwise
+   */
    public boolean isEmpty()
    {
 	  
@@ -65,8 +78,11 @@ public class Team
    }
 
    
-   //Below array adds Team Member to team
-   public void add(TeamMember m)
+   /**
+   Below array adds Team Member to team
+   @param member to be added to the team
+   */
+   public void add(TeamMember member)
    {
 
 	   int i = 0;
@@ -74,43 +90,51 @@ public class Team
 		   while(team[i] != null) {
 			   i++;
 		   }
-		   team[i] = m;
+		   team[i] = member;
 		   numMembers++;
 	   }
 	   //If array is full 
 	   catch(Exception e) {
 		   grow();
-		   add(m);
+		   add(member);
 	   }
    }
 
    
-   //Below array removes a team member from team and returns true; if team is empty, returns false
-   public boolean remove(TeamMember m)
+   /**
+   Below array removes a team member from team and returns true; if team is empty, returns false
+   @param member to be removed from the team
+   @return true if member was removed from team, false if member was not on team
+   */
+   public boolean remove(TeamMember member)
    {
 	   if (isEmpty()) {
 		   System.out.println("Team is empty!");
 		   return false;
 	   }
 	   else {
-		   int memberIndex = find(m);
+		   int memberIndex = find(member);
 		   if( memberIndex != -1) {
 			   team[memberIndex] = team[numMembers-1];
 			   team[numMembers-1] = null;
 			   numMembers--;
 			   
-			   System.out.println(m.toString() + " has left the team.");
+			   System.out.println(member.toString() + " has left the team.");
 			   
 			   return true;
 		   }
 	   }
-	   System.out.println(m.toString() + " is not a team member.");
+	   System.out.println(member.toString() + " is not a team member.");
        return false;
    }
 
    
-   //Below function returns true if team contains TeamMember m
-   public boolean contains(TeamMember m)
+   /**
+   Below function returns true if team contains TeamMember member
+   @param member  to be compared with team array
+   @return true if member is in team, false otherwise
+   */
+   public boolean contains(TeamMember member)
    {
 
 	   
@@ -123,7 +147,7 @@ public class Team
 			  int i = 0;
 			  TeamMember checker = team[i];
 			  while (true) {
-				  if(checker.equals(m)) {
+				  if(checker.equals(member)) {
 					  return true;
 				  }
 				  i++;
@@ -138,7 +162,11 @@ public class Team
    }
    
   
-   //Below Function is a Helper Function: returns the size of team 
+   /**
+   Below Function is a Helper Function: returns the size of team 
+   @param team  the size of this array is found
+   @return size of array
+   */
    private int sizeOfTeam(TeamMember[] team) {
 	
 	   
@@ -157,7 +185,9 @@ public class Team
 	   return size;
    }
 
-   
+   /**
+   This method prints all members in the team
+   */
    public void print()
    {
 	  System.out.println("We have the following Team Members:");

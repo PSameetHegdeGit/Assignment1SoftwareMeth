@@ -1,20 +1,19 @@
 import java.util.*;
 
 /**
-
- @author
- */
-/*
- * TODO: 
- * 
- */
+This class handles user input
+It calls methods to add a member, remove a member, print members, or quit according to user input
+@author Sameet Hegde, Abhijit Bhatt
+*/
 
 public class ProjectManager
 {
    Scanner stdin;
    Team cs213 = new Team();
    
-   //Function checks input, organizes input into name and date, and runs either add, remove, print, or quit depending on command
+   /**
+   Function checks input, organizes input into name and date, and runs either add, remove, print, or quit depending on command 
+   */
    public void run()
    {
 
@@ -33,14 +32,18 @@ public class ProjectManager
     	  	case "A": name = stdin.next(); date = stdin.next(); add(name, date); break;
     	  	case "R": name = stdin.next(); date = stdin.next(); remove(name, date); break;
             case "P": print(); break;
-            case "Q": done = true; break;
+            case "Q": print(); System.out.println("The team is ready to go!"); done = true; break;
             default: System.out.println(String.format("command '%s' not supported!", command)); stdin.nextLine();//deal with bad command here
     	  }     
       }
    
    } 
 
-   //Below functions adds team member to team
+   /**
+   Below functions adds team member to team
+   @param name  of member to be added
+   @param date  of member to be checked for validity and added
+   */
    private void add(String name, String date)
    {
 	 
@@ -63,7 +66,11 @@ public class ProjectManager
   
    }
 
-   //Below functions removes team members from team
+   /**
+   Below functions removes team members from team 
+   @param name  of member to be removed
+   @param date  of member to be checked for validity and removed
+   */
    private void remove(String name, String date)
    {
 	 
@@ -81,11 +88,13 @@ public class ProjectManager
   
    }
 
-   // Below function prints all team members in team
+   /** 
+   Below function prints all team members in team 
+   */
    private void print()
    {
 	   cs213.print();  
    }
 
   
-} //ProjectManager
+}
